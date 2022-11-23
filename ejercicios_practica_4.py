@@ -15,7 +15,7 @@ import csv
 # Leer y trabajar con un archivo CSV complejo y el
 # manejo de excepciones
 
-def desafio(ambientes):
+def desafio():
     print('Ejercicios con archivos CSV complejos')
     archivo = 'propiedades.csv'
 
@@ -25,6 +25,28 @@ def desafio(ambientes):
     # de departamentos de 3 ambientes disponibles.
     # Al finalizar el proceso, imprima en pantalla los resultados.
     
+    csvdoc = open (archivo, 'r')
+    lista_deptos = list(csv.DictReader(csvdoc))
+    ambientes_2 = 0
+    ambientes_3 = 0
+
+    for i in lista_deptos:
+        row = lista_deptos [i]
+        try:
+            cantidad_ambientes = int(row("ambientes"))
+
+            if i == 2:
+                ambientes_2 += 1
+            elif i == 3:
+                ambientes_3 += 1
+        except:
+            continue
+    
+    print(f"Hay {ambientes_2} departamentos de 2 ambientes y {ambientes_3} departamentos de 3 ambientes")
+
+    csvdoc.close()
+
+
     # Según el valor ingresado en "ambientes" está función deberá
     # retornar (return):
     # 1) si ambientes == "2_ambientes"
@@ -42,4 +64,4 @@ def desafio(ambientes):
 
 if __name__ == '__main__':
     print("Bienvenidos a otra clase de Inove con Python")
-    desafio("2_ambientes")
+    desafio()

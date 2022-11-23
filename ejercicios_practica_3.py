@@ -10,11 +10,13 @@
 # Ejercicios con archivos
 
 import csv
+import random
 
 
 def desafio():
     print('Ejercicio de archivos')
-    archivo = 'stock.csv'
+    archivo = "stock.csv"
+    
     
     # Realice un programa que abra el archivo 'stock.csv'
     # en modo lectura y cuente el stock total de tornillos
@@ -25,6 +27,17 @@ def desafio():
     # con "csv.DictReader", y luego recorrer los datos
     # dentro de un bucle y solo acceder a la columna "tornillos"
     # para cumplir con el enunciado del ejercicio
+
+    csvdoc = open (archivo, "r")
+    listado = list(csv.DictReader(csvdoc))
+
+    suma_tornillo = 0
+
+    for i in listado:
+        suma_tornillo += int(i["tornillos"])
+
+    print("El stock de tornillos es: ", suma_tornillo)
+    csvdoc.close()
 
     # Al final de esta función retornar (return) el stock total de tornillos
     # Comenzar aquí, recuerde el identado dentro de esta funcion
